@@ -1,5 +1,5 @@
 - name : Configure Docker on EC2 Instances
-  hosts : all
+  hosts : project
   become: true
   connection : ssh
   tasks : 
@@ -15,6 +15,11 @@
     command : sudo systemctl start docker
     become : yes
     become_user : root
+
+  - name: Pull Docker image
+    docker_image:
+    name: s009/insurance:1.0
+    source: pull
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8088:8081 s009/insurance:1.0
