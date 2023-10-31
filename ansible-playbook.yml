@@ -18,6 +18,4 @@
 
   - name: Deploy Docker Container
     command: docker run -itd -p 8088:8081 s009/insurance:1.0
-    become : yes
-    become_user : root
     
