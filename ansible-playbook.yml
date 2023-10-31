@@ -14,12 +14,6 @@
       command: sudo systemctl start docker
       become: yes
 
-    - name : stop existing containers
-      shell: docker stop $(docker ps -a -q)
-      
-    - name : delete all containers
-      shell: docker rm $(docker ps -a -q)
-
     - name : Start Docker Service
       shell : docker run -itd -p 8084:8081 s009/insurance:1
      
