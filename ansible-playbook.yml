@@ -20,6 +20,6 @@
     - name : delete all containers
       shell: docker rm $(docker ps -a -q)
 
-    - name: Start Docker Service
-      command: docker run -d -p 8084:8081 s009/insurance:1.0
-      become: yes
+    - name : Start Docker Service
+      shell : docker run -itd -p 8084:8081 s009/insurance:1
+     
