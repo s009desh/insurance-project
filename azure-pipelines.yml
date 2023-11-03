@@ -7,18 +7,17 @@ pool:
 jobs:
 - job: Build
   steps:
-  - task: UseJavaVersion@0
-    inputs:
-      version: '11'
-      architecture: 'x64'  # Specify the architecture if needed
+  - script: |
+      # Install OpenJDK 11
+      sudo apt-get update
+      sudo apt-get install -y openjdk-11-jdk
 
-  - task: MavenInstaller@0
-    inputs:
-      mavenVersionOption: 'Path'
-      mavenPath: '/usr/share/maven'  # Specify the path where Maven should be installed
+      # Install Apache Maven
+      sudo apt-get install -y maven
+    displayName: 'Install Java and Maven'
 
-  - script: 'export PATH=$PATH:/usr/share/maven/bin'
-    displayName: 'Add Maven to PATH'
+  - script: 'export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64'
+    displayName: 'Set JAVA_HOME'
 
   - task: Maven@3
     inputs:
