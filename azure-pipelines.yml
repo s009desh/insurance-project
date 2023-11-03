@@ -7,6 +7,19 @@ pool:
 jobs:
 - job: Build
   steps:
+  - task: UseJavaVersion@0
+    inputs:
+      version: '11'
+      architecture: 'x64'  # Specify the architecture if needed
+
+  - task: MavenInstaller@0
+    inputs:
+      mavenVersionOption: 'Path'
+      mavenPath: '/usr/share/maven'  # Specify the path where Maven should be installed
+
+  - script: 'export PATH=$PATH:/usr/share/maven/bin'
+    displayName: 'Add Maven to PATH'
+
   - task: Maven@3
     inputs:
       mavenPomFile: 'pom.xml'
@@ -14,6 +27,3 @@ jobs:
       goals: 'package'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      jdkVersionOption: '1.11'
-      jdkArchitectureOption: 'x64'
