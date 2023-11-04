@@ -27,14 +27,11 @@ jobs:
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
-  - task: CopyFiles@2
-    inputs:
-      Contents: '**/.jar'
-      TargetFolder: '$(build.artifactstagingdirectory)'
-  
+  - script: 'cp /home/ubuntu/myagent/_work/1/s/target/*.jar /home/ubuntu/myagent/_work/1/a'
+    displayName: 'Copy JAR Files'
+
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      PathtoPublish: '/home/ubuntu/myagent/_work/1/a'
       ArtifactName: 'jarfile'
       publishLocation: 'Container'
-     
