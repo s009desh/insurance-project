@@ -23,7 +23,7 @@ jobs:
     inputs:
       mavenPomFile: 'pom.xml'
       mavenOptions: '-Xmx3072m'
-      goals: 'package'
+      goals: 'clean package'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
