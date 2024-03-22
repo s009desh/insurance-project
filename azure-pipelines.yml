@@ -48,12 +48,10 @@ stages:
         artifactName: 'sourabh'
         path: /home/vsts/work/1/s/target'
 
+    - script: |
+        cd target 
+        ls
+      displayName: 'List Target Directory Contents'  
 
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'Dockerhub'
-        repository: 's009/azureinsurenceproject'
-        command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
 
     # Step 2: Build and push Docker image
