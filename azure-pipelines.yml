@@ -20,7 +20,7 @@ stages:
     # Step 2: Publish JAR artifact
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(System.DefaultWorkingDirectory)/target/*.jar'
+        targetPath: '$/home/vsts/work/1/s/target/*.jar'
         artifact: 'drop'
 
 - stage: BuildDockerImage
