@@ -29,7 +29,7 @@ stages:
       inputs:
         targetPath: '/home/vsts/work/1/s/target'
         artifact: '.jar'
-        publishLocation: 'drop'
+        publishLocation: 'pipeline'
 
         
 
@@ -43,7 +43,7 @@ stages:
     # Step 1: Download the pipeline artifact
     - task: DownloadPipelineArtifact@2
       inputs:
-        artifactName: 'drop'
+        artifactName: 'pipeline'
         path: $(Build.ArtifactStagingDirectory)
 
     # Step 2: Build and push Docker image
