@@ -18,12 +18,12 @@ steps:
     pwd
   displayName: 'List Target Directory Contents'
   
-- task: Docker@2
-  inputs:
-    containerRegistry: 'Dockerhub'
-    repository: 's009/azureinsurenceproject'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
+#- task: Docker@2
+ # inputs:
+  #  containerRegistry: 'Dockerhub'
+   # repository: 's009/azureinsurenceproject'
+   #  command: 'buildAndPush'
+     #Dockerfile: '**/Dockerfile'
 
 - task: PublishPipelineArtifact@1
   inputs:
@@ -33,5 +33,5 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.yml'
-    TargetFolder: '$/home/vsts/work/1/s/target'
+    TargetFolder: '$/home/vsts/work/1/a/'
     OverWrite: true
