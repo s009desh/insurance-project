@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: insurance
-          image: s009/azureinsurenceproject
+          image: s009/azureinsurenceproject  # Updated Docker image
           ports:
             - containerPort: 8081
           env:
