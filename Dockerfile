@@ -1,3 +1,4 @@
 FROM openjdk:11
-COPY /home/vsts/work/1/a/*.jar app.jar
+ARG JAR_FILE=target/project.jar
+COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
