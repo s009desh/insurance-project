@@ -17,6 +17,6 @@ steps:
     goals: 'clean package'
 
 - script: |
-    ls -la target/
+    cd target/
     pwd
   displayName: 'List Target Directory Contents'
