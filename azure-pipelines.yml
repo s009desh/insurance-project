@@ -46,6 +46,11 @@ stages:
         artifactName: '.jar'
         path: $(Build.ArtifactStagingDirectory)
 
+    - script: |
+        ls
+        
+      displayName: 'List Target Directory Contents'
+
     # Step 2: Build and push Docker image
     - task: Docker@2
       inputs:
