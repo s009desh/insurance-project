@@ -20,3 +20,9 @@ steps:
     cd target/
     pwd
   displayName: 'List Target Directory Contents'
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '/home/vsts/work/1/s/target'
+    artifact: '*.jar'
+    publishLocation: 'pipeline'
