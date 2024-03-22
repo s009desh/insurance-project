@@ -43,6 +43,7 @@ stages:
 
     - script: |
         pwd
+        mkdir target
         cp /home/vsts/work/1/a/*.jar /target/project.jar
         ls
       displayName: 'List Target Directory Contents'
