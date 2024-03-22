@@ -17,5 +17,5 @@ steps:
     goals: 'clean package'
 
 - script: |
-    ls -la
+    ls -la | cd target
   displayName: 'List Repository Contents'
