@@ -46,10 +46,6 @@ stages:
         artifactName: 'sourabh'
         path: /home/vsts/work/1/s/target'
 
-    - script: |
-        pwd
-        mkdir target
-      displayName: 'List Target Directory Contents'
 
     - task: Docker@2
       inputs:
