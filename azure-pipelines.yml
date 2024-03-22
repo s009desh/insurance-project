@@ -17,6 +17,14 @@ steps:
     goals: 'clean package'
 
 - script: |
-    ls -la 
-    cd target
-  displayName: 'List Repository Contents'
+    ls -la target/
+  displayName: 'List Target Directory Contents'
+
+- script: |
+    if [ -e target/*.jar ]; then
+      echo "JAR file found."
+    else
+      echo "JAR file not found."
+      exit 1
+    fi
+  displayName: 'Check for JAR file'
