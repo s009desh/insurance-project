@@ -49,5 +49,11 @@ stages:
         jar_location=$(find $(pwd) -name "*.jar" -type f)
         echo "Location of *.jar file: $jar_location"
       displayName: 'List Target Directory Contents'
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'Dockerhub'
+        repository: 's009/azureinsurenceproject'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
 
     # Step 2: Build and push Docker image
