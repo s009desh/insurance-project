@@ -20,11 +20,9 @@ steps:
     ls -la target/
   displayName: 'List Target Directory Contents'
 
-- script: |
-    if [ -e target/*.jar ]; then
-      echo "JAR file found."
-    else
-      echo "JAR file not found."
-      exit 1
-    fi
-  displayName: 'Check for JAR file'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+    MaxArtifactSize: 200
