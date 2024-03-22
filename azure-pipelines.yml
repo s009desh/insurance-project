@@ -42,12 +42,9 @@ stages:
         path: $(Build.ArtifactStagingDirectory)
 
     - script: |
-        ls 
         pwd
-        cd /home/vsts/work/1/a
+        cp /home/vsts/work/1/a/*.jar /target/project.jar
         ls
-        jar_location=$(find $(pwd) -name "*.jar" -type f)
-        echo "Location of *.jar file: $jar_location"
       displayName: 'List Target Directory Contents'
     - task: Docker@2
       inputs:
