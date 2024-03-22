@@ -43,7 +43,7 @@ stages:
     # Step 1: Download the pipeline artifact
     - task: DownloadPipelineArtifact@2
       inputs:
-        artifactName: 'pipeline'
+        artifactName: '.jar'
         path: $(Build.ArtifactStagingDirectory)
 
     # Step 2: Build and push Docker image
