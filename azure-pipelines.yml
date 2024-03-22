@@ -20,11 +20,16 @@ stages:
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'clean package'
 
-    # Step 2: Publish JAR artifact
+    - script: |
+        cd target/
+        pwd
+      displayName: 'List Target Directory Contents'
+      
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$/home/vsts/work/1/s/target/*.jar'
-        artifact: 'drop'
+        targetPath: '/home/vsts/work/1/s/target'
+        artifact: '.jar'
+        publishLocation: 'drop'
 
         
 
