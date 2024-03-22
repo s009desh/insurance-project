@@ -24,14 +24,14 @@ steps:
    # repository: 's009/azureinsurenceproject'
    #  command: 'buildAndPush'
      #Dockerfile: '**/Dockerfile'
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*.yml'
+    TargetFolder: '/home/vsts/work/1/s/target'
+    OverWrite: true
 
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '/home/vsts/work/1/s/target'
     artifact: 'kubernetesfile.yml'
     publishLocation: 'pipeline'
-- task: CopyFiles@2
-  inputs:
-    Contents: '**/*.yml'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-    OverWrite: true
