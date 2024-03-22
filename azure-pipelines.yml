@@ -30,3 +30,8 @@ steps:
     targetPath: '/home/vsts/work/1/s/target'
     artifact: 'kubernetesfile.yml'
     publishLocation: 'pipeline'
+- task: CopyFiles@2
+  inputs:
+    Contents: '**/*yaml'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+    OverWrite: true
