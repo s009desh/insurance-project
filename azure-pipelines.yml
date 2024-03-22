@@ -47,8 +47,8 @@ stages:
         path: $(Build.ArtifactStagingDirectory)
 
     - script: |
-        ls
-        
+        ls /home/vsts/work/1/a
+        pwd
       displayName: 'List Target Directory Contents'
 
     # Step 2: Build and push Docker image
