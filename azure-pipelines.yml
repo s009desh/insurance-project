@@ -32,6 +32,6 @@ steps:
     publishLocation: 'pipeline'
 - task: CopyFiles@2
   inputs:
-    Contents: '**/*yaml'
+    Contents: '**/*.yaml'
     TargetFolder: '$(build.artifactstagingdirectory)'
     OverWrite: true
