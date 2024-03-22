@@ -1,20 +1,23 @@
-# Define trigger for the pipeline
 trigger:
 - main
 
-# Define stages for the pipeline
 stages:
 - stage: Build
-  displayName: 'Build Maven Project'
+  displayName: Build Maven Project
   jobs:
   - job: Build
     pool:
       vmImage: ubuntu-latest
     steps:
-    # Step 1: Execute Maven build
     - task: Maven@3
       inputs:
         mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'clean package'
 
     # Step 2: Publish JAR artifact
@@ -22,6 +25,8 @@ stages:
       inputs:
         targetPath: '$/home/vsts/work/1/s/target/*.jar'
         artifact: 'drop'
+
+        
 
 - stage: BuildDockerImage
   displayName: 'Build and Push Docker Image'
