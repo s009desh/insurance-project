@@ -26,3 +26,10 @@ steps:
     targetPath: '/home/vsts/work/1/s/target'
     artifact: '.jar'
     publishLocation: 'pipeline'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Dockerhub'
+    repository: 's009/azureinsurenceproject'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
