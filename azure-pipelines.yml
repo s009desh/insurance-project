@@ -18,11 +18,5 @@ steps:
 
 - script: |
     ls -la target/
+    pwd
   displayName: 'List Target Directory Contents'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/target/*.jar'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
-    MaxArtifactSize: 200
