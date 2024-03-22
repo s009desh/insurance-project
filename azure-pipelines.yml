@@ -49,6 +49,7 @@ stages:
 
     - script: | 
         cd /home/vsts/work/1/s
+        ls
       displayName: 'List Target Directory Contents'  
 
 
