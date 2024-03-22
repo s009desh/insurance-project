@@ -61,15 +61,5 @@
 		</plugins>
 	</build>
 
-	<repository>
-		<id>s009deshpande</id>
-		<url>https://pkgs.dev.azure.com/s009deshpande/_packaging/s009deshpande/maven/v1</url>
-		<releases>
-    			<enabled>true</enabled>
-  		</releases>
-  		<snapshots>
-    		 	<enabled>true</enabled>
-  		</snapshots>
-	</repository>
 
 </project>
