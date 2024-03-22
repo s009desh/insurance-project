@@ -48,7 +48,7 @@ stages:
         path: /home/vsts/work/1/s'
 
     - script: | 
-        ls
+        cd /home/vsts/work/1/s
       displayName: 'List Target Directory Contents'  
 
 
