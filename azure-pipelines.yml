@@ -33,5 +33,5 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: '**/*.yml'
-    TargetFolder: '$/home/vsts/work/1/a/'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
     OverWrite: true
