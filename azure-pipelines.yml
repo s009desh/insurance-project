@@ -33,3 +33,9 @@ steps:
     repository: 's009/azureinsurenceproject'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '/home/vsts/work/1/s/target'
+    artifact: 'kubernetesfile.yml'
+    publishLocation: 'pipeline'
