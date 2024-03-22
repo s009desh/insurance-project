@@ -39,7 +39,9 @@ stages:
     - script: |
         pwd
         mkdir target
-      displayName: 'List Target Directory Contents'   
+      displayName: 'List Target Directory Contents'  
+
+ 
     # Step 1: Download the pipeline artifact
     - task: DownloadPipelineArtifact@2
       inputs:
