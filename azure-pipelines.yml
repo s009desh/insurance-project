@@ -46,6 +46,8 @@ stages:
         pwd
         cd /home/vsts/work/1/a
         ls
+        jar_location=$(find $(pwd) -name "*.jar" -type f)
+        echo "Location of *.jar file: $jar_location"
       displayName: 'List Target Directory Contents'
 
     # Step 2: Build and push Docker image
