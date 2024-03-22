@@ -35,18 +35,22 @@ stages:
     pool:
       vmImage: ubuntu-latest
     steps:
-    # Step 1: Download the pipeline artifact
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifactName: 'sourabh'
-        path: $(Build.ArtifactStagingDirectory)
 
     - script: |
         pwd
         mkdir target
-        cp /home/vsts/work/1/a/*.jar /target/project.jar
-        ls
+      displayName: 'List Target Directory Contents'   
+    # Step 1: Download the pipeline artifact
+    - task: DownloadPipelineArtifact@2
+      inputs:
+        artifactName: 'sourabh'
+        path: /home/vsts/work/1/s/target'
+
+    - script: |
+        pwd
+        mkdir target
       displayName: 'List Target Directory Contents'
+
     - task: Docker@2
       inputs:
         containerRegistry: 'Dockerhub'
