@@ -19,16 +19,11 @@ stages:
         publishJUnitResults: true
         testResultsFiles: '**/surefire-reports/TEST-*.xml'
         goals: 'clean package'
-
-    - script: |
-        cd target/
-        pwd
-      displayName: 'List Target Directory Contents'
       
     - task: PublishPipelineArtifact@1
       inputs:
         targetPath: '/home/vsts/work/1/s/target'
-        artifact: '.jar'
+        artifact: 'sourabh'
         publishLocation: 'pipeline'
 
         
@@ -43,19 +38,14 @@ stages:
     # Step 1: Download the pipeline artifact
     - task: DownloadPipelineArtifact@2
       inputs:
-        artifactName: '.jar'
+        artifactName: 'sourabh'
         path: $(Build.ArtifactStagingDirectory)
 
     - script: |
+        ls 
+        pwd
         cd /home/vsts/work/1/a
         ls
       displayName: 'List Target Directory Contents'
 
     # Step 2: Build and push Docker image
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'Dockerhub'
-        repository: 's009/azureinsurenceproject'
-        command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
-        buildContext: '$(Build.ArtifactStagingDirectory)'
