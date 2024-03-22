@@ -1,56 +1,37 @@
 trigger:
 - main
+pool:
+  vmImage: ubuntu-latest
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    goals: 'clean package'
+- script: |
+    cd target/
+    pwd
+  displayName: 'List Target Directory Contents'
+  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '/home/vsts/work/1/s/target'
+    artifact: 'sourabh.jar'
+    publishLocation: 'pipeline'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'Dockerhub'
+    repository: 's009/azureinsurenceproject'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
 
-stages:
-- stage: Build
-  displayName: Build Maven Project
-  jobs:
-  - job: Build
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - task: Maven@3
-      inputs:
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'clean package'
-      
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '/home/vsts/work/1/s/target'
-        artifact: 'sourabh'
-        publishLocation: 'pipeline'
-
-        
-
-- stage: BuildDockerImage
-  displayName: 'Build and Push Docker Image'
-  jobs:
-  - job: BuildAndPushDockerImage
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-
-    - script: |
-        pwd
-      displayName: 'List Target Directory Contents'  
-
- 
-    # Step 1: Download the pipeline artifact
-    - task: DownloadPipelineArtifact@2
-      inputs:
-        artifactName: 'sourabh'
-        path: /home/vsts/work/1/s'
-
-    - script: | 
-        cd /home/vsts/work/1/s
-        ls
-      displayName: 'List Target Directory Contents'  
-
-
-    # Step 2: Build and push Docker image
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '/home/vsts/work/1/s/target'
+    artifact: 'kubernetesfile.yml'
+    publishLocation: 'pipeline'
